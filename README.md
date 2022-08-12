@@ -1,19 +1,23 @@
-# front_end
+## Lijilai_Website Front_end
+基于vue-cli5.0.8搭建的简单网站
+目前支持功能:
+### 来点图图
+```
+/ShowComicImg
+```
+返回一张随机的Acg图片
 
-## Project setup
+#### 下载必要依赖包
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+#### 搭建测试服务器
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### 打包
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
