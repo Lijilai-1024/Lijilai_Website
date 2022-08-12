@@ -1,14 +1,27 @@
 <template>
     <div>
-        <el-image
-            ref="img"
-            :src="url"
-            fit="contain"
-        >
-        </el-image>
-        <el-button type="primary" @click="get_img()">来点图图</el-button>
+      <div>
+          <el-image ref="img" :src="url" fit="contain" :preview-src-list="url_list">
+            <template #error>
+              <div class="image-slot">
+                <el-icon><icon-picture /></el-icon>
+              </div>
+            </template>
+          </el-image>
+      </div>
+      <el-button type="primary" @click="get_img()">点我获得图图</el-button>
     </div>
 </template>
+<style>
+:root{
+  siz:7vh;
+}
+.el-image {
+    width: 80vh;
+    height: 50vh;
+    background: rgb(211, 211, 211);
+}
+</style>
 <script>
 import axios from 'axios'
 export default {
@@ -16,19 +29,18 @@ export default {
   data(){
     return {
         url:'',
-        // urlList:[url],
+        url_list:[],
     }
   },
   methods:{
     get_img(){
-        console.log("qwq");
         axios({
           method: 'GET',
-          url: '/api/acg',
+          url: this.$BaseUrl + 'acg/get',
           })
         .then(response => {
-            console.log(response.data)
-            this.url=response.data;
+            this.url=response.data.data;
+            this.url_list.push(this.url);
         });
     }
   },
