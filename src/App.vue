@@ -1,11 +1,27 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> | 
-    <router-link to="/YiYan">YiYan</router-link> | 
-<router-link to="/ShowComicImg">ShowComicImg</router-link>
-  </nav>
-  <router-view/>
+<el-container>
+  <el-aside class="menu" width="200px">
+    <el-button class="CollapseButton" type="primary" @click="ChangeCollapse()" circle icon="el-icon-search"></el-button>
+    <el-menu
+          default-active="1" 
+          router
+          :collapse="isCollapse"
+          active-text-color="#66ccff"
+        >
+          <el-menu-item index="/">
+            <span>主页</span>
+          </el-menu-item >
+          <el-menu-item index="/ShowAcgImage">
+            <span>来点图图</span>
+          </el-menu-item >
+        </el-menu>
+      
+  </el-aside>
+  <el-main>
+    <router-view />
+  </el-main>
+</el-container>
+
 </template>
 
 <style lang="scss">
@@ -16,17 +32,32 @@
   text-align: center;
   color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
-
-  a {
+.el-aside {
+  position: relative;
+  span {
     font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    font-size:16px;
+    text-align: center;
+    text-decoration: none;
   }
 }
+.CollapseButton{
+  position:absolute;
+  left: 0;
+  bottom:10px;
+}
 </style>
+<script>
+export default {
+  data(){
+    return{
+      isCollapse:false,
+    };
+  },
+  methods:{
+    ChangeCollapse() {
+      this.isCollapse = !this.isCollapse;
+    },
+  },
+}
+</script>

@@ -16,10 +16,10 @@ const routes = [{
             import ( /* webpackChunkName: "about" */ '../views/AboutView.vue')
     },
     {
-        path: '/ShowComicImg',
-        name: 'ShowComicImg',
+        path: '/ShowAcgImage',
+        name: 'ShowAcgImage',
         component: () =>
-            import ('../views/ShowComicImg.vue')
+            import ('../views/ShowAcgImage.vue')
     },
     {
         path: '/YiYan',
