@@ -18,12 +18,9 @@ main.el-main{
   margin:0;
   padding:0;
 }
-:root{
-  siz:7vh;
-}
 .el-image {
-    width: 80vh;
-    height: 50vh;
+    max-width: 80vh;
+    max-height: 50vh;
     background: rgb(243, 243, 243);
 }
 </style>
@@ -43,9 +40,9 @@ export default {
   methods:{
     get_img(){
       this.time_end = Date.now();
-      if(this.time_end - this.time_begin < 5000)
+      if(this.time_end - this.time_begin < 2000)
       {
-        this.$alert('别太急了,请等待5秒喵',{type:"error"});
+        this.$alert('别太急了,请等待2秒喵',{type:"error"});
       }
       else
       {
@@ -56,6 +53,7 @@ export default {
           })
         .then(response => {
             this.url=response.data.data;
+            this.url_list.length=0;
             this.url_list.push(this.url);
         });
         this.url_empty = true;

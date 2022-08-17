@@ -55,7 +55,7 @@
 }
 .CollapseButton{
   position:absolute;
-  left: 0;
+  left: 15px;
 }
 .menu:not(.el-menu--collapse) {
   width: 200px;
