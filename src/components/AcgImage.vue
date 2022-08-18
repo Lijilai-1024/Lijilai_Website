@@ -15,13 +15,19 @@
 </template>
 <style>
 main.el-main{
-  margin:0;
+  margin:0 auto;
   padding:0;
 }
 .el-image {
     max-width: 80vh;
     max-height: 50vh;
-    background: rgb(243, 243, 243);
+    background: #ffffffdb;
+}
+.el-image-viewer__canvas{
+  margin:0 0;
+}
+.el-image-viewer__wrapper{
+  margin:0 0;
 }
 </style>
 <script>

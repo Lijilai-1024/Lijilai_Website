@@ -1,6 +1,6 @@
 <template>
-<el-container>
-  <el-aside width="auto">
+<el-container :style="ElContainerStyle">
+  <el-aside width="auto" >
     <div class="ButtonBox">
       <el-button class="CollapseButton" type="primary" @click="ChangeCollapse()" circle>
             <el-icon>
@@ -14,6 +14,7 @@
           router
           :collapse="isCollapse"
           active-text-color="#66ccff"
+          background-color="#000000000"
         >
           <el-menu-item index="/">
             <el-icon><HomeFilled /></el-icon>
@@ -24,11 +25,18 @@
             <span>来点图图</span>
           </el-menu-item >
         </el-menu>
-      
   </el-aside>
-  <el-main>
-    <router-view />
-  </el-main>
+  <el-container>
+    <el-header>
+      <div class="title">Lijilai's Personal Website</div>
+    </el-header>
+    <el-main>
+      <div class="router_view">
+        <router-view />
+      </div>
+    </el-main>
+  </el-container>
+  
 </el-container>
 
 </template>
@@ -41,6 +49,37 @@
   text-align: center;
   color: #2c3e50;
 }
+.el-aside::-webkit-scrollbar {
+     display: none;
+}
+.el-menu{
+  top:10px;
+  height:100%;
+}
+.el-menu-item:hover {
+  background-color: #66ccff20 !important;
+}
+html,body,#app,.el-container{
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  background-position:50% 50%;
+  background-repeat:no-repeat;
+  background-size:auto;
+}
+.el-header{
+  padding:0;
+  background-color:#ffffffdc;
+  .title{
+    text-align: left;
+    line-height:60px;
+    margin-left :2.5%;
+    font-size:30px;
+    font-family:'Comic Sans MS';
+    
+  }
+  
+}
 .el-aside {
   span {
     font-weight: bold;
@@ -48,8 +87,21 @@
     text-align: center;
     text-decoration: none;
   }
+  background-color:#e9ee9099;
+  border-right: 0;
+}
+.el-main{
+  background-color:#ffffffdc;
+  width:100%;
+  height:100%;
+  margin:0 auto;
+  .router_view{
+    width:80%;
+    margin:0 auto;
+  }
 }
 .ButtonBox{
+  top:10px;
   position:relative;
   height:40px;
 }
@@ -63,12 +115,16 @@
 }
 </style>
 <script>
+import axios from 'axios'
 export default {
   data(){
     return{
       isCollapse:true,
       CollapseIcon:"ArrowRightBold",
       isMobile:true,
+      ElContainerStyle:{
+        backgroundImage:'',
+      },
     };
   },
   methods:{
@@ -88,15 +144,25 @@ export default {
         this.CollapseIcon = "ArrowRightBold";
       }
     },
-    listenScreen() {
+    ListenScreen() {
       let screenWidth = document.body.clientWidth;	//初始化判断
       if (screenWidth < 500) this.isMobile = true;
       else this.isMobile = false;
     },
+    SetBackgroundImage(){
+        axios({
+          method: 'GET',
+          url: this.$BaseUrl + 'acg/get',
+          })
+        .then(response => {
+            this.ElContainerStyle.backgroundImage="url(" + response.data.data + ")";
+        });
+    }
   },
   mounted(){
-    this.listenScreen();
+    this.ListenScreen();
     this.ReChangeCollapse(this.isMobile);
+    this.SetBackgroundImage();
   },
 }
 </script>
