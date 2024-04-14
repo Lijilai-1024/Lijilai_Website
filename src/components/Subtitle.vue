@@ -45,7 +45,7 @@ export default{
     },
     methods: {
         icon_src: function(){
-            return "../public/icons/" + this.icon + ".svg";
+            return "/icons/" + this.icon + ".svg";
         }
     },
 }
