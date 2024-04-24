@@ -1,6 +1,6 @@
 <template>
     <div id="subtitle">
-        <img :src="icon_src()"/>
+        <img v-if="is_icon()" :src="icon_src()"/>
         {{ subtitle }}
     </div>
 </template>
@@ -30,6 +30,15 @@
     padding:0;
     margin:0;
 }
+@media (max-width: 768px) {
+  #subtitle{
+    font-size: 24px;
+  }
+  #subtitle img{
+    width: 24px;
+    height: 24px;
+  }
+}
 </style>
 <script>
 export default{
@@ -46,6 +55,10 @@ export default{
     methods: {
         icon_src: function(){
             return "/icons/" + this.icon + ".svg";
+        },
+        is_icon: function(){
+            console.log(this.icon);
+            return this.icon != "none";
         }
     },
 }

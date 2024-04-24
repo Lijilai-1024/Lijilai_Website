@@ -40,4 +40,10 @@ watchEffect(() => {
     font-family:'微软雅黑','Comic Sans MS';
     font-size:20px;
 }
+@media (max-width: 768px) {
+  #content{
+    font-size: 16px;
+  }
+  
+}
 </style>

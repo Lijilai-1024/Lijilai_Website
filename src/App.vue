@@ -1,29 +1,25 @@
 <script setup>
 import Logo from './components/Logo.vue'
-import Avatar from './components/Avatar.vue';
-import Subtitle from './components/Subtitle.vue';
-import Content from './components/Content.vue';
+import { RouterLink, RouterView } from 'vue-router'
+import routes from './router/router.js'
+console.log(routes)
 </script>
 
 <template>
+  
   <header>  
     <Logo/>
   </header>
   
   <main>
-    <Avatar/>
-    <div id="Name">
-      <div>李佶来</div>
-      <div><img class="icons" src="/icons/Email.svg" alt="img"/> lijilai1024@sjtu.edu.cn</div>
-    </div>
-    <Subtitle icon="Education" subtitle="教育经历"/>
-    <Content contentFrom="Education"/>
-    <Subtitle icon="SettingFilled" subtitle="专业技能"/>
-    <Content contentFrom="Skills"/>
-    <Subtitle icon="GroupFilled" subtitle="项目经历"/>
-    <Content contentFrom="Experiences"/>
-    <Subtitle icon="Information" subtitle="其他"/>
-    <Content contentFrom="Other"/>
+  <aside>
+    <nav>
+        <RouterLink v-for="route in routes" :to="route.path">
+        {{ route.name }}
+        </RouterLink>
+    </nav>
+  </aside>
+    <RouterView />
   </main>
 </template>
 
@@ -34,37 +30,54 @@ import Content from './components/Content.vue';
 }
 header{
   width:100%;
-  height:auto;
-  padding-bottom:20px;
+  height:50px;
   max-height:100px;
+  position: fixed;
+  z-index: 100;
 }
 main{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 1;
-  padding-top:10px;
-  padding-bottom: 10px;
   background-color: rgba(240,248,255,70%);
-  width:80%;
+  width:70%;
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;
+  padding-top:60px;
 }
-#Name{
-  display: flex;
-  margin: auto;
-  height:24px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-family: 'SmileySans','Comic Sans MS';
-  font-size:24px;
-}
-.icons{
-  width: 24px;
-  height: 24px;
-  padding:0;
+aside{
+  position: fixed;
+  top:50px;
   margin:0;
+  left:0;
+  background: linear-gradient(to bottom,rgba(102,204,255,70%),rgba(240,248,255,70%));
+  width:10%;
+  height:100%;
+}
+nav a{
+  text-decoration: none;
+  font-size:20px;
+  font-family: 'SmileySans','Comic Sans MS';
+  text-align: center;
+  background-color: rgba(240,248,255,70%);
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+}
+nav a:hover{
+  background-color: rgba(240,248,255,90%);
+  cursor: pointer;
+}
+aside nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height:100%;
+  gap: 20px;
+  padding-top: 20px;
+}
+@media (max-width: 768px) {
+  aside{
+    display: none;
+  }
 }
 </style>
 
