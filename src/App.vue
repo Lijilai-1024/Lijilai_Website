@@ -2,7 +2,6 @@
 import Logo from './components/Logo.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import routes from './router/router.js'
-console.log(routes)
 </script>
 
 <template>
@@ -57,6 +56,7 @@ nav a{
   font-size:20px;
   font-family: 'SmileySans','Comic Sans MS';
   text-align: center;
+  color: black;
   background-color: rgba(240,248,255,70%);
   padding: 5px;
   width: 80%;

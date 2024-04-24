@@ -14,6 +14,13 @@
     margin-left:auto;
     margin-right:auto;
 }
+@media (max-width: 768px) {
+    #avatar img
+    {
+        width: 150px;
+    }
+
+}
 </style>
 <script>
 import { defineComponent } from 'vue'

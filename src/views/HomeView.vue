@@ -47,6 +47,7 @@ import { RouterLink } from 'vue-router';
   padding: 5px;
   width: 80%;
   border-radius: 20px;
+  color:black;
 }
 .navbar a:hover{
   background-color: rgba(240,248,255,90%);

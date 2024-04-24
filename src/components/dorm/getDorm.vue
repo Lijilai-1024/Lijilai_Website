@@ -2,24 +2,25 @@
 
 </template>
 <script>
-const axios = require('axios').default;
+import axios from 'axios';
 
 export default {
   name: 'getDorm',
   data() {
     return {
-      dorms: {}
+      dorms: null,
     }
   },
   methods: {
-    getDorms() {
-      axios.get('https://net.sjtu.edu.cn/dorm/index.php')
-        .then(response => {
-          console.log(response.data)
-        })
+    async getDorms() {
+      const response = await axios.get('http://59.78.20.49:8002/getDorm/').then(response => {
+        this.dorms = response.data
+      })
+      return response
     }
   },
-  created() {
+  async created() {
     this.getDorms()
   }
 }
+</script>
