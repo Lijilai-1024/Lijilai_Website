@@ -5,7 +5,8 @@ console.log(getDorm.methods.getDorms().then(response => {
 }));
 </script>
 <template>
-    <div>
+    <h1>锐意制作中</h1>
+    <!-- <div>
         <getDorm></getDorm>
         {{ getDorm.data() }}
         <h1>Get Dorm</h1>
@@ -14,5 +15,5 @@ console.log(getDorm.methods.getDorms().then(response => {
                 {{ dorm.keys() }}
             </li>
         </ul>
-    </div>
+    </div> -->
 </template>

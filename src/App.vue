@@ -37,6 +37,7 @@ header{
 main{
   background-color: rgba(240,248,255,70%);
   width:70%;
+  height: 100%;
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;

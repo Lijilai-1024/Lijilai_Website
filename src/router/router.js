@@ -1,6 +1,7 @@
 import ResumeView from '../views/ResumeView.vue'
 import HomeView from '../views/HomeView.vue'
 import DormSwitchView from '../views/DormSwitchView.vue'
+import Game2048View from '../views/Game2048View.vue'
 const routes = [
   {
     path: '/',
@@ -19,6 +20,11 @@ const routes = [
     path:'/DormSwitch',
     name:'交换机',
     component:DormSwitchView
+  },
+  {
+    path:'/2048',
+    name:'2048',
+    component:Game2048View
   },
 ]
 export default routes
