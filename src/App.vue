@@ -48,13 +48,16 @@ header{
   z-index: 100;
 }
 main{
+  position: fixed;
+  top:55px;
+  border-radius: 10px;
+  left:15%;
   background-color: rgba(240,248,255,70%);
   width:70%;
   height: 100%;
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;
-  padding-top:60px;
 }
 aside{
   position: fixed;
