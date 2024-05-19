@@ -1,7 +1,20 @@
-<script setup>
+<script>
 import Logo from './components/Logo.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import routes from './router/router.js'
+export default{
+  components: {
+    Logo,
+    RouterLink,
+    RouterView
+  },
+  data(){
+    return {
+      routes: routes
+    }
+  }
+
+}
 </script>
 
 <template>

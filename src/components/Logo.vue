@@ -9,7 +9,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 #logo {
     display: flex;
     margin: 0;

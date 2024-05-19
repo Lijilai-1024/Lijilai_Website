@@ -6,5 +6,5 @@
     <p style="margin-left:20px">曾担任上海交通大学学生网络信息管理部报修组组长</p>
     <p style="margin-left:20px">曾担任上海交通大学电子信息与电气工程学院青志队人资部副部长</p>
 </template>
-<style>
+<style scoped>
 </style>
