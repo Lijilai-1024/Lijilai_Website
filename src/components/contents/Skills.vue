@@ -14,7 +14,7 @@
     <div>掌握 Markdown/Latex 进行文本写作与排版</div>
     <div>掌握 Office 等办公软件的使用</div>
 </template>
-<style>
+<style scoped>
 p .subtitle{
     font-weight: bold;
 }

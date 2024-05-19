@@ -50,7 +50,6 @@ import Content from '../components/Content.vue';
   align-items: center;
   justify-content: center;
   margin: auto;
-  padding-top: 20px;
   padding-bottom: 20px;
 }
 @media screen and (max-width: 768px) {

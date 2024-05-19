@@ -7,7 +7,7 @@
     <div>上海交通大学医学院“医+X”大创项目</div>
     <div>负责利用Python和R进行数据汇总、清洗、分析</div>
 </template>
-<style>
+<style scoped>
 .subtitle{
     font-weight: bold;
 }

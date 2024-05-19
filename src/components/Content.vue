@@ -21,7 +21,7 @@ watchEffect(() => {
     </div>
 </template>
 
-<style>
+<style scoped>
 @font-face {
     font-family: 'SmileySans';
     src: url(..\assets\SmileySans-Oblique.otf.woff2);

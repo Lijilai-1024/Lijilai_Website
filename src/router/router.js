@@ -2,6 +2,7 @@ import ResumeView from '../views/ResumeView.vue'
 import HomeView from '../views/HomeView.vue'
 import DormSwitchView from '../views/DormSwitchView.vue'
 import Game2048View from '../views/Game2048View.vue'
+import TodoListView from '../views/TodoListView.vue'
 const routes = [
   {
     path: '/',
@@ -26,5 +27,10 @@ const routes = [
     name:'2048',
     component:Game2048View
   },
+  {
+    path: '/todo',
+    name: 'todo',
+    component: TodoListView
+  }
 ]
 export default routes

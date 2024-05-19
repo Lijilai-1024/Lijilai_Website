@@ -1,7 +1,20 @@
-<script setup>
+<script>
 import Logo from './components/Logo.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import routes from './router/router.js'
+export default{
+  components: {
+    Logo,
+    RouterLink,
+    RouterView
+  },
+  data(){
+    return {
+      routes: routes
+    }
+  }
+
+}
 </script>
 
 <template>
@@ -35,13 +48,16 @@ header{
   z-index: 100;
 }
 main{
+  position: fixed;
+  top:55px;
+  border-radius: 10px;
+  left:15%;
   background-color: rgba(240,248,255,70%);
   width:70%;
   height: 100%;
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;
-  padding-top:60px;
 }
 aside{
   position: fixed;
