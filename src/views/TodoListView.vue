@@ -4,7 +4,7 @@
         <div class="todo_board__catagory">
             <TodoItem 
             v-for="todo in todos_Emergency"
-            @del_todo="todos=todos.filter(item => item !== todo)" 
+            @del_todo="delete_todo(todo)" 
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>
@@ -12,7 +12,7 @@
         <div class="todo_board__catagory">
             <TodoItem 
             v-for="todo in todos_Important" 
-            @del_todo="todos=todos.filter(item => item !== todo)" 
+            @del_todo="delete_todo(todo)" 
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>
@@ -20,7 +20,7 @@
         <div class="todo_board__catagory">
             <TodoItem 
             v-for="todo in todos_Safe" 
-            @del_todo="todos=todos.filter(item => item !== todo)" 
+            @del_todo="delete_todo(todo)" 
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>
@@ -57,14 +57,19 @@
         :rows="2"
         ></el-input>
         <div class="todo_item__add__buttons">
-            <el-select 
+            <!-- <el-select 
             v-model="newItem.catagory" 
             placeholder="Please Select"
         >
             <el-option label="Emergency" value="0"></el-option>
             <el-option label="Important" value="1"></el-option>
             <el-option label="Safe" value="2"></el-option>
-        </el-select>
+        </el-select> -->
+        <el-radio-group v-model="newItem.catagory" class="ml-4">
+            <el-radio-button  value="0">Emergency</el-radio-button>
+            <el-radio-button  value="1">Important</el-radio-button>
+            <el-radio-button  value="2">Safe</el-radio-button>
+        </el-radio-group>
         <el-button @click="create_todo">Add</el-button>
         </div>
         
@@ -194,7 +199,12 @@ export default{
                 content: this.newItem.content
             })
             this.newItem.content = "";
+            localStorage.setItem("todos", JSON.stringify(this.todos));
         },
+        delete_todo(todo){
+            this.todos = this.todos.filter(item => item !== todo);
+            localStorage.setItem("todos", JSON.stringify(this.todos));
+        }
     },
     mounted(){
         this.todos = JSON.parse(localStorage.getItem("todos")) || [];

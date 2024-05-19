@@ -4,10 +4,31 @@
            {{ catagory_string }}
         </div>
         <div class="todo_content">
-            <div class="todo_content__content">
+            <div v-if="!isEdit" class="todo_content__content" style="width:70%;flex:1;margin:0;padding:0;">
             {{ content }}
             </div>
-            <el-button @click="del_todo" circle> ✔️ </el-button>
+            <div v-if="isEdit" class="todo_content__editing" style="width:70%;flex:1;margin:0;padding:0;">
+                <el-input
+                    v-model="this.content"
+                    type="textarea"
+                    placeholder="Please input"
+                    :autosize="{ minRows: 2, maxRows: 114514 }"
+                    style="font-size:16px;"
+                />
+            </div>
+            <div class="todo_content__buttons" style="display: flex;flex-direction:column;align-items: center;justify-content: center;margin:0;padding:0;width: auto;gap:5px;">
+                <el-button circle size="medium" style="margin:0;padding:0;" @click="isEdit=!isEdit;">
+                    <el-icon>
+                        <Edit/>
+                    </el-icon>
+                </el-button>
+                <el-button @click="del_todo" circle size="medium" style="margin:0;padding:0;">
+                    <el-icon>
+                        <Check/>
+                    </el-icon>
+                </el-button>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -36,6 +57,7 @@
     font-size: 16px;
     text-align: center;
     border-top: none;
+    gap:5px;
 }
 #todo_item{
     width:100%;
@@ -62,11 +84,7 @@
 }
 </style>
 <script>
-import { ElButton } from 'element-plus';
 export default {
-    components: {
-        ElButton,
-    },
     props: {
         catagory: {
             type: Number,
@@ -78,6 +96,11 @@ export default {
             default:"",
             required: true,
         },
+    },
+    data(){
+        return {
+            isEdit: false,
+        }
     },
     computed:{
         catagory_string(){
@@ -115,7 +138,8 @@ export default {
     emits:['del_todo'],
     methods:{
         del_todo(){
-            this.$emit('del_todo');
+            if(!this.isEdit)
+                this.$emit('del_todo');
         }
     }
 }
