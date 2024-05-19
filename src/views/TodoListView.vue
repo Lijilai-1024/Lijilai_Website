@@ -5,6 +5,7 @@
             <TodoItem 
             v-for="todo in todos_Emergency"
             @del_todo="delete_todo(todo)" 
+            @edit_todo="todo.content = $event"
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>

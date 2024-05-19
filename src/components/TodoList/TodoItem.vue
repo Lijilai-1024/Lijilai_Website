@@ -9,15 +9,14 @@
             </div>
             <div v-if="isEdit" class="todo_content__editing" style="width:70%;flex:1;margin:0;padding:0;">
                 <el-input
-                    v-model="this.content"
+                    v-model="this.edit_content"
                     type="textarea"
-                    placeholder="Please input"
                     :autosize="{ minRows: 2, maxRows: 114514 }"
                     style="font-size:16px;"
                 />
             </div>
             <div class="todo_content__buttons" style="display: flex;flex-direction:column;align-items: center;justify-content: center;margin:0;padding:0;width: auto;gap:5px;">
-                <el-button circle size="medium" style="margin:0;padding:0;" @click="isEdit=!isEdit;">
+                <el-button circle size="medium" style="margin:0;padding:0;" @click="changeEdit">
                     <el-icon>
                         <Edit/>
                     </el-icon>
@@ -84,6 +83,7 @@
 }
 </style>
 <script>
+
 export default {
     props: {
         catagory: {
@@ -100,6 +100,7 @@ export default {
     data(){
         return {
             isEdit: false,
+            edit_content: this.content
         }
     },
     computed:{
@@ -135,11 +136,18 @@ export default {
     
     mounted(){
     },
-    emits:['del_todo'],
+    emits:['del_todo','edit_todo'],
     methods:{
         del_todo(){
             if(!this.isEdit)
                 this.$emit('del_todo');
+        },
+        changeEdit(){
+            if(!this.isEdit) this.isEdit = !this.isEdit;
+            else{
+                this.isEdit = !this.isEdit;
+                this.$emit('edit_todo', this.edit_content)
+            }
         }
     }
 }
