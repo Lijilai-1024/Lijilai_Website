@@ -63,6 +63,15 @@
             </div>
             </n-collapse-item>
         </n-collapse>
+        <NInputNumber 
+            v-model:value="n"
+            @update-value="reset"
+            button-placement="both"
+            update-value-on-input="false"
+            min="3"
+            max="8"
+        >
+        </NInputNumber>
     </div>
 
 </template>
@@ -202,7 +211,7 @@ h2.title{
 }
 </style>
 <script>
-import {NButton,NIcon,NCollapse,NCollapseItem} from 'naive-ui';
+import {NButton,NIcon,NCollapse,NCollapseItem, NInputNumber} from 'naive-ui';
 import {IosArrowBack,IosArrowDown,IosArrowForward,IosArrowUp,IosUndo,IosRefresh} from '@vicons/ionicons4';
 import { IosCloudDownload } from '@vicons/ionicons4';
 export default {
@@ -217,12 +226,13 @@ export default {
         IosUndo,
         IosRefresh,
         NCollapse,
-        NCollapseItem
+        NCollapseItem,
+        NInputNumber
     },
     data() 
     {
         return {
-            n: 4,
+            n: 8,
             map: [],
             lastStep: [],
             SavedStep: [],
@@ -232,7 +242,7 @@ export default {
             steps: 0,
             isGameOver: false,
             prb: 0.8,//生成2的概率
-            undomsg: ""
+            undomsg: "",
         }
     },
     methods: 
@@ -284,6 +294,7 @@ export default {
             }
             this.map = this.SavedStep.map(subArray => [...subArray]);
             this.score = this.SavedScore;
+            this.isGameOver = false;
             this.undomsg = "";
         },
         SaveLastStep() 
@@ -298,6 +309,11 @@ export default {
         },
         reset() 
         {
+            if(typeof(this.n) !== "number" || this.n < 3 || this.n > 8)
+            {
+                this.n = 4;
+            }
+            this.map = null;
             this.map = [];
             this.lastStep = [];
             for (let i = 0; i < this.n; i++) {
@@ -308,6 +324,7 @@ export default {
                     this.lastStep[i].push("");
                 }
             }
+            //this.map.value = [...this.map.value];
             this.generateNumber();
             this.generateNumber();
             this.score = 0;
@@ -513,6 +530,7 @@ export default {
             switch (event.key) 
             {
                 case 'ArrowUp':
+                    event.preventDefault();
                     this.moveTop();
                     break;
                 case 'w':
@@ -520,18 +538,21 @@ export default {
                     break;
                 case 'ArrowDown':
                     this.moveBottom();
+                    event.preventDefault();
                     break;
                 case 's':
                     this.moveBottom();
                     break;
                 case 'ArrowLeft':
                     this.moveLeft();
+                    event.preventDefault();
                     break;
                 case 'a':
                     this.moveLeft();
                     break;
                 case 'ArrowRight':
                     this.moveRight();
+                    event.preventDefault();
                     break;
                 case 'd':
                     this.moveRight();
