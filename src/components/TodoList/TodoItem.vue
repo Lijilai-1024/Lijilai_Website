@@ -16,12 +16,12 @@
                 />
             </div>
             <div class="todo_content__buttons" style="display: flex;flex-direction:column;align-items: center;justify-content: center;margin:0;padding:0;width: auto;gap:5px;">
-                <el-button circle size="medium" style="margin:0;padding:0;" @click="changeEdit">
+                <el-button circle style="margin:0;padding:0;" @click="changeEdit">
                     <el-icon>
                         <Edit/>
                     </el-icon>
                 </el-button>
-                <el-button @click="del_todo" circle size="medium" style="margin:0;padding:0;">
+                <el-button @click="del_todo" circle style="margin:0;padding:0;">
                     <el-icon>
                         <Check/>
                     </el-icon>

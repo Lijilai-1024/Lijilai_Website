@@ -76,11 +76,10 @@
             <el-radio-button  value="1">Important</el-radio-button>
             <el-radio-button  value="2">Safe</el-radio-button>
         </el-radio-group>
-        <el-button @click="create_todo">Add</el-button>
+        <el-button @click="create_todo" type="success">Add</el-button>
         </div>
         
     </div>
-    
 </template>
 <style scoped>
 .title{
@@ -150,6 +149,7 @@
         display: none;
     }
     .todo_board_mobile{
+        height: auto;
         display: flex;
         flex-direction: column;
         width:80%;

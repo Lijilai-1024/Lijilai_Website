@@ -32,6 +32,7 @@ export default{
     </nav>
   </aside>
     <RouterView />
+    <br/><br/>
   </main>
 </template>
 
@@ -48,16 +49,22 @@ header{
   z-index: 100;
 }
 main{
-  position: fixed;
+  position: relative;
+  height:100%;
+  max-height: 100vh;
+  overflow: auto;
   top:55px;
   border-radius: 10px;
-  left:15%;
   background-color: rgba(240,248,255,70%);
   width:70%;
-  height: 100%;
   margin-left:auto;
   margin-right:auto;
   padding-bottom:30px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }
 aside{
   position: fixed;
