@@ -14,6 +14,7 @@
             <TodoItem 
             v-for="todo in todos_Important" 
             @del_todo="delete_todo(todo)" 
+            @edit_todo="todo.content = $event"
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>
@@ -22,6 +23,7 @@
             <TodoItem 
             v-for="todo in todos_Safe" 
             @del_todo="delete_todo(todo)" 
+            @edit_todo="todo.content = $event"
             :catagory="todo.catagory" 
             :content="todo.content">
             </TodoItem>
@@ -31,6 +33,7 @@
             <TodoItem 
                 v-for="todo in todos_Emergency" 
                 @del_todo="todos=todos.filter(item => item !== todo)" 
+                @edit_todo="todo.content = $event"
                 :catagory="todo.catagory" 
                 :content="todo.content">
             </TodoItem>
@@ -38,6 +41,7 @@
             <TodoItem 
                 v-for="todo in todos_Important" 
                 @del_todo="todos=todos.filter(item => item !== todo)" 
+                @edit_todo="todo.content = $event"
                 :catagory="todo.catagory" 
                 :content="todo.content">
             </TodoItem>
@@ -45,6 +49,7 @@
             <TodoItem 
                 v-for="todo in todos_Safe" 
                 @del_todo="todos=todos.filter(item => item !== todo)" 
+                @edit_todo="todo.content = $event"
                 :catagory="todo.catagory" 
                 :content="todo.content">
             </TodoItem>
