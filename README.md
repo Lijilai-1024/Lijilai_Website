@@ -1,5 +1,7 @@
 # Lijilai-Website
 
+## You can visit my website on
+![](lijilai.pages.dev)
 ## Project Setup
 
 ```sh
